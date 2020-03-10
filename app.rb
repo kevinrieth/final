@@ -14,5 +14,27 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-events_table = DB.from(:events)
-rsvps_table = DB.from(:rsvps)
+venues_table = DB.from(:venues)
+checkins_table = DB.from(:checkins)
+users_table = DB.from(:users)
+
+get "/" do
+    puts "params: #{params}"
+
+    pp venues_table.all.to_a
+    @venues = venues_table.all.to_a
+    view "venues"
+end
+
+get "/venues/:id" do
+    puts "params: #{params}"
+
+    @venue = venues_table.where(id: params[:id]).to_a[0]
+    pp @venue
+    @checkins = checkins_table.where(venue_id: @venue[:id]).to_a
+    view "venue"
+end
+
+get "/account/new" do
+    view "createaccount"
+end

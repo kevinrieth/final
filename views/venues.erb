@@ -1,0 +1,5 @@
+<h1>Venues</h1>
+
+<% for venue in @venues %>
+    <p><a href="/venues/<%= venue[:id] %>"><%= venue[:title] %></a></p>
+<% end %>

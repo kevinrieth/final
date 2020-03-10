@@ -5,31 +5,61 @@ DB = Sequel.connect(connection_string)                                          
 #######################################################################################
 
 # Database schema - this should reflect your domain model
-DB.create_table! :events do
+DB.create_table! :venues do
   primary_key :id
   String :title
-  String :description, text: true
-  String :date
-  String :location
+  String :city, text: true
+  String :state, text: true
 end
-DB.create_table! :rsvps do
+DB.create_table! :checkins do
   primary_key :id
-  foreign_key :event_id
-  Boolean :going
-  String :name
+  foreign_key :venue_id
+  Boolean :playedhere
+  String :review, text: true
+end
+DB.create_table! :users do
+  primary_key :id
+  String :firstname
+  String :lastname
   String :email
-  String :comments, text: true
+  String :password
 end
 
 # Insert initial (seed) data
-events_table = DB.from(:events)
+venues_table = DB.from(:venues)
 
-events_table.insert(title: "Bacon Burger Taco Fest", 
-                    description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
-                    date: "June 21",
-                    location: "Kellogg Global Hub")
+venues_table.insert(title: "Martyrs", 
+                    city: "Chicago",
+                    state: "IL")
 
-events_table.insert(title: "Kaleapolooza", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+venues_table.insert(title: "Burlington Bar", 
+                    city: "Chicago",
+                    state: "IL")
+
+venues_table.insert(title: "Emporium", 
+                    city: "Chicago",
+                    state: "IL")
+
+venues_table.insert(title: "Mexitaly", 
+                    city: "York",
+                    state: "PA")
+
+venues_table.insert(title: "Spirit", 
+                    city: "Pittsburgh",
+                    state: "PA")
+
+venues_table.insert(title: "Cat's Eye Pub", 
+                    city: "Baltimore",
+                    state: "MD")
+
+venues_table.insert(title: "The Empty Bottle", 
+                    city: "Chicago",
+                    state: "IL")
+
+venues_table.insert(title: "Schubas Tavern", 
+                    city: "Chicago",
+                    state: "IL")
+
+venues_table.insert(title: "Tin Roof", 
+                    city: "Baltimore",
+                    state: "MD")

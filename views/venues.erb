@@ -1,5 +1,17 @@
 <h1>Venues</h1>
 
 <% for venue in @venues %>
-    <p><a href="/venues/<%= venue[:id] %>"><%= venue[:title] %></a></p>
+        <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+            <img src= "<%= venue[:imgurl] %>" class="card-img">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><a href="/venues/<%= venue[:id] %>"><%= venue[:title] %></a></h5>
+                <p class="card-text"><%= venue[:city] %>, <%= venue[:state]%></p>
+            </div>
+            </div>
+        </div>
+        </div>
 <% end %>

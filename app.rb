@@ -4,7 +4,8 @@ require "sinatra/reloader" if development?                                      
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
-require "bcrypt"                                                                      #
+require "bcrypt"  
+require "geocoder"                                                                   #
 connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqlite3"  #
 DB ||= Sequel.connect(connection_string)                                              #
 DB.loggers << Logger.new($stdout) unless DB.loggers.size > 0                          #
@@ -30,9 +31,21 @@ get "/venues/:id" do
     puts "params: #{params}"
 
     @venue = venues_table.where(id: params[:id]).to_a[0]
-    pp @venue
     @checkins = checkins_table.where(venue_id: @venue[:id]).to_a
     view "venue"
+end
+
+get "/venues/:id/checkins/new" do
+    puts "params: #{params}"
+
+    @venue = venues_table.where(id: params[:id]).to_a[0]
+    view "new_checkin"
+end
+
+get "/venues/:id/checkins/thankyou" do
+    puts "params: #{params}"
+
+    view "checkin_thankyou"
 end
 
 get "/account/new" do

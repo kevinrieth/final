@@ -17,8 +17,8 @@ end
 DB.create_table! :checkins do
   primary_key :id
   foreign_key :venue_id
+  foreign_key :user_id
   Boolean :playedhere
-  String :name, text: true
   String :review, text: true
   String :rating
 end

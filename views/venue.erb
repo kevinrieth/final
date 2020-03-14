@@ -41,6 +41,20 @@
             <a href="/venues/<%= @venue[:id] %>/checkins/new" class="btn btn-primary">Played here? Leave a review!</a>
         </p>
     </div>
+</div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Reviews</h3>
+                <% for checkin in @checkins %>
+                    <div class="media">
+                        <div class="media-body">
+                            <%= checkin[:review] %>
+                        </div>
+                    </div>
+                <% end %>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

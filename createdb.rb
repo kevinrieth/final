@@ -76,8 +76,8 @@ venues_table.insert(title: "Cat's Eye Pub",
                     imgurl: "https://c8.alamy.com/comp/G3EYR5/cats-eye-pub-emporium-collagia-thames-street-fells-point-baltimore-G3EYR5.jpg")
 
 venues_table.insert(title: "The 8x10", 
-                    city: "Chicago",
-                    state: "IL",
+                    city: "Baltimore",
+                    state: "MD",
                     latitude: "39.277001",
                     longitude: "-76.613861",
                     imgurl: "https://www.dcmusicreview.com/wp-content/uploads/2017/10/the8x10-baltimore.jpg")

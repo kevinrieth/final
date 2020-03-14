@@ -18,6 +18,8 @@ after { puts; }                                                                 
 venues_table = DB.from(:venues)
 checkins_table = DB.from(:checkins)
 users_table = DB.from(:users)
+lat_field = DB.fetch("SELECT latitude FROM venues")
+long_field = DB.fetch("SELECT longitude FROM venues")
 
 get "/" do
     puts "params: #{params}"
@@ -32,8 +34,8 @@ get "/venues/:id" do
 
     @venue = venues_table.where(id: params[:id]).to_a[0]
     @checkins = checkins_table.where(venue_id: @venue[:id]).to_a
-    @lat = venues_table[:latitude].where(id: params[:id]).to_a[0]
-    @long = venues_table[:longitude].where(id: params[:id]).to_a[0]
+    @lat = @venue[:latitude]
+    @long = @venue[:longitude]
     @lat_long = "#{@lat},#{@long}"
     pp @lat_long
     view "venue"

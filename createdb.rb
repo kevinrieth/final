@@ -10,8 +10,8 @@ DB.create_table! :venues do
   String :title
   String :city, text: true
   String :state, text: true
-  Numeric :latitude
-  Numeric :longitude
+  String :latitude
+  String :longitude
   String :imgurl
 end
 DB.create_table! :checkins do
@@ -64,34 +64,34 @@ venues_table.insert(title: "Mexitaly",
 venues_table.insert(title: "Spirit", 
                     city: "Pittsburgh",
                     state: "PA",
-                    latitude: "41.951989",
-                    longitude: "-87.677050",
+                    latitude: "40.478658",
+                    longitude: "-79.956578",
                     imgurl: "https://images.squarespace-cdn.com/content/v1/5500fa72e4b0bce6805d867a/1555684215018-OOU3Q1T15A7921OSVDR1/ke17ZwdGBToddI8pDm48kJwPXV7m4jSdjfwuOULw7T17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ktJPZ5nzlpAQ9l-HYKRq6WraCscNT4XZv3Z3uy4d_MdZe0zctX2CvQquGjSqvm_xw/Spirit+front.jpg?format=2500w")
 
 venues_table.insert(title: "Cat's Eye Pub", 
                     city: "Baltimore",
                     state: "MD",
-                    latitude: "41.951989",
-                    longitude: "-87.677050",
+                    latitude: "39.282083",
+                    longitude: "-76.591571",
                     imgurl: "https://c8.alamy.com/comp/G3EYR5/cats-eye-pub-emporium-collagia-thames-street-fells-point-baltimore-G3EYR5.jpg")
 
 venues_table.insert(title: "The 8x10", 
                     city: "Chicago",
                     state: "IL",
-                    latitude: "41.951989",
-                    longitude: "-87.677050",
+                    latitude: "39.277001",
+                    longitude: "-76.613861",
                     imgurl: "https://www.dcmusicreview.com/wp-content/uploads/2017/10/the8x10-baltimore.jpg")
 
 venues_table.insert(title: "Schubas Tavern", 
                     city: "Chicago",
                     state: "IL",
-                    latitude: "41.951989",
-                    longitude: "-87.677050",
+                    latitude: "41.939672",
+                    longitude: "-87.663595",
                     imgurl: "https://s3.amazonaws.com/architecture-org/files/modules/schubas-tavern-eric-rogers-002.jpg")
 
 venues_table.insert(title: "Tin Roof", 
                     city: "Baltimore",
                     state: "MD",
-                    latitude: "41.951989",
-                    longitude: "-87.677050",
+                    latitude: "39.288912",
+                    longitude: "-76.607220",
                     imgurl: "https://s3-media0.fl.yelpcdn.com/bphoto/ejPHkVdRe4IGVa9gQHgjeA/o.jpg")

@@ -18,8 +18,6 @@ after { puts; }                                                                 
 venues_table = DB.from(:venues)
 checkins_table = DB.from(:checkins)
 users_table = DB.from(:users)
-lat_field = DB.fetch("SELECT latitude FROM venues")
-long_field = DB.fetch("SELECT longitude FROM venues")
 
 get "/" do
     puts "params: #{params}"
@@ -54,6 +52,29 @@ get "/venues/:id/checkins/thankyou" do
     view "checkin_thankyou"
 end
 
-get "/account/new" do
-    view "createaccount"
+get "/user/new" do
+    view "new_user"
+end
+
+post "/users/create" do
+    puts params
+    hashed_password = BCrypt::Password.create(params["password"])
+    users_table.insert(firstname: params["firstname"], lastname: params["lastname"], email: params["email"], password: hashed_password)
+    view "account_thankyou"
+end
+
+get "/logins/new" do
+    view "new_login_session"
+end
+
+post "/logins/create" do
+    user = users_table.where(email: params["email"]).to_a[0]
+    puts BCrypt::Password::new(user[:password])
+    if user && BCrypt::Password::new(user[:password]) == params["password"]
+        session["user_id"] = user[:id]
+        @current_user = user
+        view "create_login"
+    else
+        view "create_login_nope"
+    end
 end

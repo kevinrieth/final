@@ -32,6 +32,7 @@ get "/venues/:id" do
 
     @venue = venues_table.where(id: params[:id]).to_a[0]
     @checkins = checkins_table.where(venue_id: @venue[:id]).to_a
+    @users_table = users_table
     @lat = @venue[:latitude]
     @long = @venue[:longitude]
     @lat_long = "#{@lat},#{@long}"
@@ -41,14 +42,17 @@ end
 
 get "/venues/:id/checkins/new" do
     puts "params: #{params}"
-
     @venue = venues_table.where(id: params[:id]).to_a[0]
     view "new_checkin"
 end
 
 get "/venues/:id/checkins/thankyou" do
-    puts "params: #{params}"
-
+    puts params
+    @venue = venues_table.where(id: params["id"]).to_a[0]
+    checkins_table.insert(venue_id: params["id"],
+                       user_id: session["user_id"],
+                       playedhere: params["playedhere"],
+                       review: params["review"])
     view "checkin_thankyou"
 end
 

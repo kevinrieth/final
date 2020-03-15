@@ -47,9 +47,9 @@
         <div class="col-sm-6">
             <h3>Reviews</h3>
                 <% for checkin in @checkins %>
-                    <div class="media">
-                        <div class="media-body">
-                            <%= checkin[:review] %>
+                    <div class="card">
+                        <div class="card-body">
+                            <%= @users_table.where(id: checkin[:user_id]).to_a[0][:firstname] %>: <%= checkin[:review] %>
                         </div>
                     </div>
                 <% end %>
